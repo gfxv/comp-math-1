@@ -11,6 +11,7 @@ import dev.gfxv.utils.MatrixReader;
 import dev.gfxv.utils.Seidel;
 
 import java.io.FileNotFoundException;
+import java.math.BigDecimal;
 
 public class App {
 
@@ -62,7 +63,10 @@ public class App {
             System.out.printf("Found solution in %d iterations\n", result.getIterationsCount());
             System.out.println("Solution:");
             for (int i = 0; i < result.getSolution().length; i++) {
-                System.out.printf("x[%d] %.3f\n", i + 1, result.getSolution()[i]);
+                System.out.printf("x[%d] ", i+1);
+                System.out.print(BigDecimal.valueOf(result.getSolution()[i]).toPlainString());
+//                System.out.print(result.getSolution()[i]);
+                System.out.println();
             }
 
         } catch (InvalidMatrixSizeException |

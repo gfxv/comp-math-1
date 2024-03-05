@@ -3,7 +3,8 @@ package dev.gfxv.entities;
 import dev.gfxv.exceptions.InvalidMatrixNumberException;
 import lombok.Getter;
 
-import java.util.Arrays;
+import java.util.*;
+import java.util.stream.Stream;
 
 @Getter
 public class Matrix {
@@ -30,19 +31,17 @@ public class Matrix {
     }
 
     public boolean isDiagonallyDominant() {
+        for (int i = 0; i < matrix.length; i++) {
+            double sum = 0;
+            for (int j = 0; j < matrix.length; j++) {
+                if (j != i) sum += Math.abs(matrix[i][j]);
+            }
 
-        boolean oneStrict = false;
-
-        for (int rowIndex = 0; rowIndex < matrix.length; rowIndex++) {
-            DominantIndex dominantIndex = findDominantIndex(matrix[rowIndex]);
-            if (dominantIndex.getIndex() != rowIndex)
+            if (Math.abs(matrix[i][i]) < sum) {
                 return false;
-
-            if (dominantIndex.isStrict())
-                oneStrict = true;
+            }
         }
-
-        return oneStrict;
+        return true;
     }
 
     public boolean makeDiagonallyDominant() {
