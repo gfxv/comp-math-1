@@ -32,20 +32,20 @@ public class App {
             System.out.printf("Epsilon: %f\n", epsilon);
             System.out.println("Input matrix: ");
             System.out.println(matrix);
-//            if (!matrix.isDiagonallyDominant()) {
-//                System.out.println("Matrix is not diagonally dominant");
-//                System.out.println("Trying to make it diagonally dominant...");
-//                if (!matrix.makeDiagonallyDominant()) {
-//                    System.out.println("Matrix can't be made diagonally dominant.");
-//                    System.out.println();
-//                    System.out.println("Exiting the program...");
-//                    System.exit(0);
-//
-//                }
-//                System.out.println();
-//                System.out.println("New matrix:");
-//                System.out.println(matrix);
-//            }
+            if (!matrix.isDiagonallyDominant()) {
+                System.out.println("Matrix is not diagonally dominant");
+                System.out.println("Trying to make it diagonally dominant...");
+                if (!matrix.makeDiagonallyDominant()) {
+                    System.out.println("Matrix can't be made diagonally dominant.");
+                    System.out.println();
+                    System.out.println("Exiting the program...");
+                    System.exit(0);
+
+                }
+                System.out.println();
+                System.out.println("New matrix:");
+                System.out.println(matrix);
+            }
 
 //            System.out.println("Computing determinant...");
 //            double determinant = Determinant.determinant(matrix.getMatrix());

@@ -29,58 +29,58 @@ public class Matrix {
 
     }
 
-//    public boolean isDiagonallyDominant() {
-//
-//        boolean oneStrict = false;
-//
-//        for (int rowIndex = 0; rowIndex < matrix.length; rowIndex++) {
-//            DominantIndex dominantIndex = findDominantIndex(matrix[rowIndex]);
-//            if (dominantIndex.getIndex() != rowIndex)
-//                return false;
-//
-//            if (dominantIndex.isStrict())
-//                oneStrict = true;
-//        }
-//
-//        return oneStrict;
-//    }
+    public boolean isDiagonallyDominant() {
 
-//    public boolean makeDiagonallyDominant() {
-//
-//        double[][] newMatrix = new double[n][n];
-//        double[] newBCoeff = new double[n];
-//
-//        for (int row = 0; row < this.matrix.length; row++) {
-//            DominantIndex dominantIndex = findDominantIndex(this.matrix[row]);
-//            if (dominantIndex.getIndex() != -1) {
-//                newMatrix[dominantIndex.getIndex()] = this.matrix[row];
-//                newBCoeff[dominantIndex.getIndex()] = this.bCoeff[row];
-//                continue;
-//            }
-//            return false;
-//        }
-//
-//        this.matrix = newMatrix;
-//        this.bCoeff = newBCoeff;
-//
-//        return true;
-//    }
+        boolean oneStrict = false;
 
-//    private DominantIndex findDominantIndex(double[] row) {
-//
-//        double rowSum = Arrays.stream(row)
-//                .map(Math::abs)
-//                .sum();
-//
-//        for (int i = 0; i < row.length; i++) {
-//            double diff = Math.abs(row[i]) * 2 - rowSum;
-//            if (diff >= 0)
-//                return new DominantIndex(i, diff != 0);
-//
-//        }
-//
-//        return new DominantIndex(-1, false);
-//    }
+        for (int rowIndex = 0; rowIndex < matrix.length; rowIndex++) {
+            DominantIndex dominantIndex = findDominantIndex(matrix[rowIndex]);
+            if (dominantIndex.getIndex() != rowIndex)
+                return false;
+
+            if (dominantIndex.isStrict())
+                oneStrict = true;
+        }
+
+        return oneStrict;
+    }
+
+    public boolean makeDiagonallyDominant() {
+
+        double[][] newMatrix = new double[n][n];
+        double[] newBCoeff = new double[n];
+
+        for (int row = 0; row < this.matrix.length; row++) {
+            DominantIndex dominantIndex = findDominantIndex(this.matrix[row]);
+            if (dominantIndex.getIndex() != -1) {
+                newMatrix[dominantIndex.getIndex()] = this.matrix[row];
+                newBCoeff[dominantIndex.getIndex()] = this.bCoeff[row];
+                continue;
+            }
+            return false;
+        }
+
+        this.matrix = newMatrix;
+        this.bCoeff = newBCoeff;
+
+        return true;
+    }
+
+    private DominantIndex findDominantIndex(double[] row) {
+
+        double rowSum = Arrays.stream(row)
+                .map(Math::abs)
+                .sum();
+
+        for (int i = 0; i < row.length; i++) {
+            double diff = Math.abs(row[i]) * 2 - rowSum;
+            if (diff >= 0)
+                return new DominantIndex(i, diff != 0);
+
+        }
+
+        return new DominantIndex(-1, false);
+    }
 
 
     public void checkDiagonalZeros() throws InvalidMatrixNumberException {
